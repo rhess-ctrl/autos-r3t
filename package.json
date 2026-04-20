@@ -1,0 +1,57 @@
+{
+  "name": "autos-r3t",
+  "version": "0.1.16",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "fetchql": "3.0.0",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
+    "zustand": "^5.0.12"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "6.0.1",
+    "autoprefixer": "10.5.0",
+    "bumpp": "11.0.1",
+    "concurrently": "9.2.1",
+    "cspell": "10.0.0",
+    "only-allow": "1.2.2",
+    "pettier": "^1.1.0",
+    "postcss": "8.5.10",
+    "prettier": "3.8.3",
+    "prettier-plugin-tailwindcss": "0.7.2",
+    "proto-tailwindcss-clrs": "0.0.486",
+    "tailwindcss": "4.2.2",
+    "vite": "8.0.9"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "bump": "bumpp patch --commit --tag --push --yes",
+    "deploy-app": "cd dist; ln -s ../.vercel .vercel; vc --prod",
+    "release": "pnpm bump && pnpm build && pnpm deploy-app",
+    "dev": "concurrently \"pnpm:twx --watch\" \"pnpm:start\"",
+    "twx": "sh ./.generate",
+    "start": "vite",
+    "build": "pnpm twx; pnpm format; vite build",
+    "serve": "vite preview",
+    "cc": "prettier --check './src/**/*.{css,pcss,js,jsx}'",
+    "format": "prettier --write './src/**/*.{css,pcss,js,jsx}'",
+    "spell": "cspell './**/*.{js,jsx}'",
+    "open": "open https://autos-r3t.vercel.app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

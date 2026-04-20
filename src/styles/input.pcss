@@ -1,0 +1,33 @@
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@config '../../tailwind.config.js';
+
+@layer components {
+  .ds1-main {
+    @apply text-clrs-navy m-6 flex flex-col font-sans antialiased;
+  }
+}
+
+.ikon {
+  height: 96px;
+  width: 96px;
+  min-height: 96px;
+  min-width: 96px;
+}
+
+@media (min-width: 500px) {
+  .ikon {
+    height: 144px;
+    width: 144px;
+  }
+}
+
+@media (min-width: 700px) {
+  .ikon {
+    height: 196px;
+    width: 196px;
+  }
+}
