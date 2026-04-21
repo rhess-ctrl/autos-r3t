@@ -1,10 +1,43 @@
-#!/usr/bin/env bash
-#
-TARGET=../.generate
+#!/bin/bash
+# ---------------------------------------------------------------------
+source ${HOME}/bin/utils/colors.sh
 
-if [ -f ${TARGET} ]
+PWD=`pwd`
+COMPONENT=`basename ${PWD}`
+PREFIX="--"
+
+INPUT=./src/styles/input.pcss
+OUTPUT=./src/styles/app.css
+
+if [ -f package.json ]
 then
-  sh ${TARGET}
+  PUBV=`cat package.json | jj "*.tailwindcss"`
+  INDX=./src/utils/index.ts
+  if [ -f $INDX ]
+  then
+    CODE=./src/utils/tw-version.ts
+  else
+    CODE=./src/utils/tw-version.js
+  fi
+
+  echo "// WARNING:  generated file..." > $CODE
+  echo "const TW_VERSION = '$PUBV';" >> $CODE
+  echo "" >> $CODE
+  echo "export { TW_VERSION };" >> $CODE
+  echo "export default TW_VERSION;" >> $CODE
+
+  printf "%s %s \n" $PREFIX $CODE
 else
-  echo "-- skip"
+  printf "%s missing file... [ ${RED}%s${STOP} ] \n" $PREFIX "package.json"
+fi
+
+if [ -f $INPUT ]
+then
+  printf "%s %s \n" $PREFIX $COMPONENT
+  # step 1 - generate app.css
+  npx @tailwindcss/cli -i $INPUT -o $OUTPUT $1
+  # step 2 - split into tokens.css & utils.css
+  genTokens ./src/styles
+else
+  printf "%s missing input... [ ${RED}%s${STOP} ] \n" $PREFIX $INPUT
 fi
