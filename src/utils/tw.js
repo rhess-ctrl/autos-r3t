@@ -1,6 +1,6 @@
 const tw = (...classes) => {
-  return classes.filter(Boolean).join(" ")
-}
+  return classes.filter(Boolean).join(" ");
+};
 
-export { tw }
-export default tw
+export { tw };
+export default tw;

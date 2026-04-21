@@ -1,5 +1,5 @@
-import React from "react"
-import { tw } from "../utils"
+import React from "react";
+import { tw } from "../utils";
 
 const Header = ({ label }) => {
   return (
@@ -12,8 +12,8 @@ const Header = ({ label }) => {
     >
       {label}
     </h1>
-  )
-}
+  );
+};
 
-export { Header }
-export default Header
+export { Header };
+export default Header;

@@ -1,10 +1,10 @@
-import React from "react"
-import { VehicleCard } from "./VehicleCard"
+import React from "react";
+import { VehicleCard } from "./VehicleCard";
 
 const VehicleList = ({ list }) => {
-  const count = list ? list.length : 0
+  const count = list ? list.length : 0;
 
-  if (count === 0) return <></>
+  if (count === 0) return <></>;
 
   return (
     <div className="flex flex-col">
@@ -12,8 +12,8 @@ const VehicleList = ({ list }) => {
         <VehicleCard key={vehicle.vin} value={vehicle} />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export { VehicleList }
-export default VehicleList
+export { VehicleList };
+export default VehicleList;

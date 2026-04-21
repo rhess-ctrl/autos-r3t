@@ -1,9 +1,9 @@
-import React from "react"
-import { tw } from "../utils"
+import React from "react";
+import { tw } from "../utils";
 
 const DealerCard = ({ value }) => {
-  const { dealerId, name, vehicles } = value || {}
-  const count = vehicles ? vehicles.length : 0
+  const { dealerId, name, vehicles } = value || {};
+  const count = vehicles ? vehicles.length : 0;
 
   return (
     <div
@@ -21,8 +21,8 @@ const DealerCard = ({ value }) => {
         {dealerId ? dealerId : ""}
       </label>
     </div>
-  )
-}
+  );
+};
 
-export { DealerCard }
-export default DealerCard
+export { DealerCard };
+export default DealerCard;

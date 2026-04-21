@@ -1,6 +1,6 @@
-import { create } from "zustand"
-import { persist, createJSONStorage, devtools } from "zustand/middleware"
-import FetchQL from "fetchql"
+import { create } from "zustand";
+import { persist, createJSONStorage, devtools } from "zustand/middleware";
+import FetchQL from "fetchql";
 
 // --------------------------------------------------------[ store ]
 
@@ -21,13 +21,13 @@ const useStore = create(
     ),
     { name: "autos-r3t" },
   ),
-)
+);
 
 // --------------------------------------------------------[ processing ]
 
 const processData = (next) => {
   if (next) {
-    const pick = useStore.getState().pick
+    const pick = useStore.getState().pick;
 
     useStore.setState(
       {
@@ -37,45 +37,45 @@ const processData = (next) => {
       },
       false,
       "processData",
-    )
+    );
   } else {
     useStore.setState(
       { data: undefined, loading: false },
       false,
       "processData/clear",
-    )
+    );
   }
-}
+};
 
 const processPick = (next) => {
-  const data = useStore.getState().data
+  const data = useStore.getState().data;
 
   if (data && next !== undefined) {
     useStore.setState(
       { pick: next, dealer: data.list[next] },
       false,
       "processPick",
-    )
+    );
   } else {
     useStore.setState(
       { pick: 0, dealer: undefined },
       false,
       "processPick/clear",
-    )
+    );
   }
-}
+};
 
 // --------------------------------------------------------[ graphQL ]
 
 const Client = new FetchQL({
   url: "https://gt-forza.vercel.app/graphql",
-})
+});
 
 const GET_UUID = `
   query Uuid($count: Int!) {
     uuid(count: $count)
   }
-`
+`;
 
 const GET_DEALERS = `
   query Solution($id: String!) {
@@ -96,22 +96,22 @@ const GET_DEALERS = `
       }
     }
   }
-`
+`;
 
 // --------------------------------------------------------[ actions ]
 
 const initApp = () => {
-  const { data, pick } = useStore.getState()
+  const { data, pick } = useStore.getState();
 
   if (data) {
-    processData(data)
+    processData(data);
     if (pick) {
-      processPick(pick)
+      processPick(pick);
     }
   } else {
-    refresh()
+    refresh();
   }
-}
+};
 
 const refresh = () => {
   useStore.setState(
@@ -124,16 +124,16 @@ const refresh = () => {
     },
     false,
     "refresh",
-  )
+  );
 
-  const count = 1
+  const count = 1;
 
   Client.query({
     operationName: "Uuid",
     query: GET_UUID,
     variables: { count },
   }).then((response) => {
-    const id = response.data.uuid[0]
+    const id = response.data.uuid[0];
 
     Client.query({
       operationName: "Solution",
@@ -142,23 +142,23 @@ const refresh = () => {
     }).then((response) => {
       const list = JSON.parse(
         JSON.stringify(response.data.solution.data.dealers),
-      )
-      const solution = { id, list }
+      );
+      const solution = { id, list };
 
-      processData(solution)
-    })
-  })
-}
+      processData(solution);
+    });
+  });
+};
 
 const updatePick = (pick) => {
-  processPick(pick)
-}
+  processPick(pick);
+};
 
 const actions = {
   initApp,
   refresh,
   updatePick,
-}
+};
 
-export { useStore, actions }
-export default useStore
+export { useStore, actions };
+export default useStore;

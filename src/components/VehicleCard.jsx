@@ -1,16 +1,16 @@
-import React from "react"
-import { tw } from "../utils"
+import React from "react";
+import { tw } from "../utils";
 
-const racingRegex = /^\#[0-9]*/
+const racingRegex = /^\#[0-9]*/;
 
-const isRacing = (model) => model.match(racingRegex) != null
+const isRacing = (model) => model.match(racingRegex) != null;
 
-const isExotic = (year) => year === 2554
+const isExotic = (year) => year === 2554;
 
-const isModern = (year) => year > 2010
+const isModern = (year) => year > 2010;
 
 const VehicleCard = ({ value }) => {
-  const { vin, make, model, year, color } = value || {}
+  const { vin, make, model, year, color } = value || {};
 
   return (
     <div
@@ -48,8 +48,8 @@ const VehicleCard = ({ value }) => {
         label={make ? make.toLowerCase() : ""}
       />
     </div>
-  )
-}
+  );
+};
 
-export { VehicleCard }
-export default VehicleCard
+export { VehicleCard };
+export default VehicleCard;

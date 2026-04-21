@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from "react";
 import {
   DealerView,
   Eswat2Io,
@@ -6,16 +6,16 @@ import {
   Header,
   Spinner,
   ToolBar,
-} from "./components"
-import { actions, useStore, tw } from "./utils"
+} from "./components";
+import { actions, useStore, tw } from "./utils";
 
 const App = () => {
-  const loading = useStore((s) => s.loading)
-  const dealer = useStore((s) => s.dealer)
+  const loading = useStore((s) => s.loading);
+  const dealer = useStore((s) => s.dealer);
 
   useEffect(() => {
-    actions.initApp()
-  }, [])
+    actions.initApp();
+  }, []);
 
   return (
     <main className="ds1-main">
@@ -36,7 +36,7 @@ const App = () => {
       <DealerView dealer={dealer} />
       <Footer />
     </main>
-  )
-}
+  );
+};
 
-export default App
+export default App;

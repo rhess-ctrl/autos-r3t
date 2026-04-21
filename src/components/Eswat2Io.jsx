@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
-const url = "https://eswat2.dev"
-const who = "eswat2"
+const url = "https://eswat2.dev";
+const who = "eswat2";
 
 const Eswat2Io = () => {
   return (
@@ -14,8 +14,8 @@ const Eswat2Io = () => {
     >
       <proto-ikon-loader name="fingerprint" size={24} label="eswat2" />
     </a>
-  )
-}
+  );
+};
 
-export { Eswat2Io }
-export default Eswat2Io
+export { Eswat2Io };
+export default Eswat2Io;

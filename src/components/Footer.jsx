@@ -1,5 +1,5 @@
-import React from "react"
-import { TW_VERSION } from "../utils"
+import React from "react";
+import { TW_VERSION } from "../utils";
 
 const Footer = () => {
   return (
@@ -8,8 +8,8 @@ const Footer = () => {
         Tailwind {TW_VERSION}
       </label>
     </div>
-  )
-}
+  );
+};
 
-export { Footer }
-export default Footer
+export { Footer };
+export default Footer;

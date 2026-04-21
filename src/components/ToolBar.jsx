@@ -1,15 +1,15 @@
-import React from "react"
-import { actions, useStore, tw } from "../utils"
+import React from "react";
+import { actions, useStore, tw } from "../utils";
 
 const ToolBar = () => {
-  const loading = useStore((s) => s.loading)
-  const pick = useStore((s) => s.pick)
-  const data = useStore((s) => s.data)
+  const loading = useStore((s) => s.loading);
+  const pick = useStore((s) => s.pick);
+  const data = useStore((s) => s.data);
 
-  const list = data ? data.list : []
-  const max = list.length - 1
+  const list = data ? data.list : [];
+  const max = list.length - 1;
 
-  if (loading) return <></>
+  if (loading) return <></>;
 
   return (
     <div className="flex">
@@ -48,8 +48,8 @@ const ToolBar = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export { ToolBar }
-export default ToolBar
+export { ToolBar };
+export default ToolBar;

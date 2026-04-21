@@ -1,11 +1,11 @@
-import React from "react"
-import { tw } from "../utils"
+import React from "react";
+import { tw } from "../utils";
 
 const Spinner = ({ hex, class: klass, label, size }) => {
-  const fill = hex || "currentColor"
-  const cls = klass || ""
-  const title = label || "loading..."
-  const sz = size || 24
+  const fill = hex || "currentColor";
+  const cls = klass || "";
+  const title = label || "loading...";
+  const sz = size || 24;
 
   return (
     <svg
@@ -35,8 +35,8 @@ const Spinner = ({ hex, class: klass, label, size }) => {
       </g>
       <path d="M0 0h24v24H0z" fill="none" />
     </svg>
-  )
-}
+  );
+};
 
-export { Spinner }
-export default Spinner
+export { Spinner };
+export default Spinner;
