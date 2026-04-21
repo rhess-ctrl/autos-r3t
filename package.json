@@ -30,8 +30,8 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "bump": "bumpp patch --commit --tag --push --yes",
-    "deploy-app": "cd dist; ln -s ../.vercel .vercel; vc --prod",
-    "release": "pnpm bump && pnpm build && pnpm deploy-app",
+    "deploy-app": "echo --skip",
+    "release": "echo --skip",
     "dev": "concurrently \"pnpm:twx --watch\" \"pnpm:start\"",
     "twx": "sh ./.generate",
     "start": "vite",
